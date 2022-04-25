@@ -1,0 +1,8 @@
+{
+	        "tools": "FreeBayes,HaplotypeCaller,Manta,mpileup,Strelka,TIDDIT,VEP",
+		    "input": "samples.tsv",
+		    "no_intervals": true,
+		    "genome": "GRCh37",
+		    "igenomes_base": "references"
+}
+

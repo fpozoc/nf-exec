@@ -1,0 +1,7 @@
+name: nf-exec
+
+dependencies:
+  - nf-core
+  - nextflow
+  - singularity>=3
+  - pandas
