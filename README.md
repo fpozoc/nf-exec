@@ -24,7 +24,7 @@ Tools to reproduce the steps to run nf-core pipelines for bioinformatics analysi
 ## Conda
 Run the silent installation of [Miniconda](https://docs.conda.io/en/latest/miniconda.html)/[Anaconda](https://anaconda.org/) in case you don't have this software in your environment.
 
-```sh
+```bash
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 bash Miniconda3-latest-Linux-x86_64.sh -b -p $HOME/miniconda3
 ```
@@ -32,7 +32,7 @@ bash Miniconda3-latest-Linux-x86_64.sh -b -p $HOME/miniconda3
 ## Docker
 Run the installation of [Docker](https://docs.docker.com/engine/install/ubuntu/) in case you don't have this software in your environment.
 
-```sh
+```bash
  sudo apt-get update
 
  sudo apt-get install \
@@ -61,20 +61,20 @@ sudo docker run hello-world
 ### Reference genomes
 
 Creating the data structure:
-```sh
+```bash
 mkdir -p data/reference data/out data/samples
 ```
 
 Downloading commonly used bioinformatics reference genomes. In this case, GATK files for GRCh38 and GRCh37:
 
-```sh
+```bash
 make gatk-grch38
 make gatk-grch37
 ```
 
 ### Usage
 1. Modify <my_sample_id> and <data_dir> by the actual variables and setting environment variables:
-```sh
+```bash
 $SAMPLE_ID=<my_sample_id>
 $DATA_DIR=<data_dir>
 
@@ -85,7 +85,7 @@ $RESULTS_DIR=$DATA_DIR/out/$SAMPLE_ID/results
 ```
 
 2. Creating the directory structure with symbolic links (check this guide [here](https://www.digitalocean.com/community/tutorials/workflow-symbolic-links) in case you don't know how to deal with symbolic links):
-```sh
+```bash
 mkdir -p $SAMPLE_ID # creating the new directory for the new upcoming sample
 
 ln -s $SAMPLE_DIR"/"$SAMPLE_ID_1".fastq.gz" $SAMPLE_ID"/samples/sample1_1.fastq.gz" # sample1_1.fastq.gz
@@ -96,7 +96,7 @@ ln -s $RESULTS_DIR $SAMPLE_ID/results # results directory
 ```
 
 3. Run the pipeline:
-```sh
+```bash
 bash run.sh
 ```
 
@@ -111,7 +111,7 @@ nextflow \
 ```
 
 ### Sample directory structure:
-```sh
+```bash
 $ nf-exec/sample_template/: tree -L 3
 .
 ├── params.json # parameters for the pipeline
@@ -134,7 +134,7 @@ $ nf-exec/sample_template/: tree -L 3
 If you want to perform a different analysis, below is an example of how to run a RNA-seq pipeline:
 
 1. Downloading genome references. In this case, NCBI Reference Genome for GRCh38:
-```sh
+```bash
 make download-ncbi-grch38
 ```
 2. Reproduce the same 2 and 3 steps as before changing the ids for control and case.
@@ -154,7 +154,7 @@ TREATMENT,samples/<SAMPLE_ID_treatment>_1.fastq.gz,samples/<SAMPLE_ID_treatment>
 ```
 
 1. Modify the `<SAMPLE_ID>/run.sh` file to run the RNA-seq pipeline:
-```sh
+```bash
 #!/bin/bash
 nextflow \
 	run nf-core/rnaseq -r 3.6 \
@@ -164,7 +164,7 @@ nextflow \
 ```
 
 # Directory structure
-```sh
+```bash
 $ nf-exec/: tree -L 3
 .
 ├── data # data directory to store all the input and output files
